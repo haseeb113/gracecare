@@ -49,6 +49,14 @@
 </li>
 @endif
 
+@if(in_array(auth()->user()->role,['admin','receptionist']))
+<li class="nav-item">
+  <a href="{{ route('invoices.index') }}" class="nav-link">
+    <i class="nav-icon fas fa-file-invoice-dollar"></i>
+    <p>Billing</p>
+  </a>
+</li>
+@endif
 
         <li class="nav-item">
     <a class="nav-link text-danger" href="{{ route('logout') }}"

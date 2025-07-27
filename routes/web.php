@@ -5,6 +5,7 @@ use App\http\Controllers\AuthController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\PrescriptionController;
+use App\Http\Controllers\InvoiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,3 +62,6 @@ Route::middleware(['auth','isDoctor'])->group(function(){
 });
 
 
+Route::middleware(['auth','canBill'])->group(function(){
+    Route::resource('invoices', InvoiceController::class);
+});
