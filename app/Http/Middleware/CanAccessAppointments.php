@@ -16,9 +16,11 @@ class CanAccessAppointments
      */
     public function handle(Request $request, Closure $next)
     {
-        if (! in_array(auth()->user()->role, ['receptionist','doctor'])) {
-            abort(403);
-        }
+      // after
+if (! in_array(auth()->user()->role, ['admin','receptionist','doctor'])) {
+    abort(403);
+}
+
         return $next($request);
     }
 }

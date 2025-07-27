@@ -32,7 +32,7 @@
 </li>
 @endif
 
-@if(in_array(auth()->user()->role,['receptionist','doctor']))
+@if(in_array(auth()->user()->role,['receptionist','doctor','admin']))
 <li class="nav-item">
   <a href="{{ route('appointments.index') }}" class="nav-link">
     <i class="nav-icon fas fa-calendar-alt"></i>
