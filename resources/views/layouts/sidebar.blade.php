@@ -23,6 +23,14 @@
   </a>
 </li>
 @endif
+@if(in_array(auth()->user()->role, ['admin', 'receptionist']))
+<li class="nav-item">
+  <a href="{{ route('patients.index') }}" class="nav-link">
+    <i class="nav-icon fas fa-user-injured"></i>
+    <p>Patients</p>
+  </a>
+</li>
+@endif
 
 
 

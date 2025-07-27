@@ -43,7 +43,7 @@ Route::middleware('auth')->group(function () {
     })->name('dashboard.receptionist');
 });
 
-Route::middleware(['auth', 'can:manage-patients'])->group(function () {
+Route::middleware(['auth', 'canAccessPatient'])->group(function () {
     Route::resource('patients', PatientController::class);
 });
 Route::get('/logout', function () {

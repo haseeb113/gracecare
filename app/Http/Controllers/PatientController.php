@@ -1,9 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Patient;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PatientController extends Controller
 {
@@ -21,12 +21,11 @@ class PatientController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string',
+            'name' => 'required',
         ]);
 
         Patient::create($request->all());
-
-        return redirect()->route('patients.index')->with('success', 'Patient added');
+        return redirect()->route('patients.index')->with('success', 'Patient added successfully.');
     }
 
     public function edit(Patient $patient)
@@ -37,18 +36,17 @@ class PatientController extends Controller
     public function update(Request $request, Patient $patient)
     {
         $request->validate([
-            'name' => 'required|string',
+            'name' => 'required',
         ]);
 
         $patient->update($request->all());
-
-        return redirect()->route('patients.index')->with('success', 'Patient updated');
+        return redirect()->route('patients.index')->with('success', 'Patient updated successfully.');
     }
 
     public function destroy(Patient $patient)
     {
         $patient->delete();
-        return back()->with('success', 'Patient deleted');
+        return redirect()->route('patients.index')->with('success', 'Patient deleted successfully.');
     }
 }
 
