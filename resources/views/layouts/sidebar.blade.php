@@ -15,6 +15,17 @@
             <p>Dashboard</p>
           </a>
         </li>
+        @if(auth()->user()->role == 'admin')
+<li class="nav-item">
+  <a href="{{ route('doctors.index') }}" class="nav-link">
+    <i class="nav-icon fas fa-user-md"></i>
+    <p>Doctors</p>
+  </a>
+</li>
+@endif
+
+
+
         <li class="nav-item">
     <a class="nav-link text-danger" href="{{ route('logout') }}"
        onclick="return confirm('Are you sure you want to logout?')">

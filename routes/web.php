@@ -1,8 +1,11 @@
 <?php
-
+use App\Http\Controllers\DoctorController;
 use Illuminate\Support\Facades\Route;
 use App\http\Controllers\AuthController;
 use App\Http\Controllers\PatientController;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,3 +50,6 @@ Route::get('/logout', function () {
     auth()->logout();
     return redirect('/login')->with('success', 'Logged out successfully.');
 })->name('logout');
+Route::middleware(['auth', 'isAdmin'])->group(function () {
+    Route::resource('doctors', DoctorController::class);
+});
