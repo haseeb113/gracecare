@@ -32,6 +32,14 @@
 </li>
 @endif
 
+@if(in_array(auth()->user()->role,['receptionist','doctor']))
+<li class="nav-item">
+  <a href="{{ route('appointments.index') }}" class="nav-link">
+    <i class="nav-icon fas fa-calendar-alt"></i>
+    <p>Appointments</p>
+  </a>
+</li>
+@endif
 
 
         <li class="nav-item">
