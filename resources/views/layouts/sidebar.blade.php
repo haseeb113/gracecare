@@ -40,6 +40,14 @@
   </a>
 </li>
 @endif
+@if(auth()->user()->role === 'doctor')
+<li class="nav-item">
+  <a href="{{ route('prescriptions.index') }}" class="nav-link">
+    <i class="nav-icon fas fa-prescription-bottle"></i>
+    <p>Prescriptions</p>
+  </a>
+</li>
+@endif
 
 
         <li class="nav-item">

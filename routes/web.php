@@ -3,8 +3,8 @@ use App\Http\Controllers\DoctorController;
 use Illuminate\Support\Facades\Route;
 use App\http\Controllers\AuthController;
 use App\Http\Controllers\PatientController;
-
-
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\PrescriptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,3 +53,11 @@ Route::get('/logout', function () {
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::resource('doctors', DoctorController::class);
 });
+Route::middleware(['auth','canAppoint'])->group(function(){
+    Route::resource('appointments', AppointmentController::class);
+});
+Route::middleware(['auth','isDoctor'])->group(function(){
+    Route::resource('prescriptions', PrescriptionController::class);
+});
+
+
